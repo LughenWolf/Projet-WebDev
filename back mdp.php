@@ -79,7 +79,7 @@ $conn->close();
         <br>
         <input type="password" name="password" id="password" placeholder="Entrez votre mot de passe" required />
         <br>
-        <button type="submit">SIGN IN</button>
+        <button type="submit">SIGN UP</button>
     </form>
 
     <!-- Affichage du message uniquement si la variable $message n'est pas vide -->
