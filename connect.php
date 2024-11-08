@@ -48,8 +48,8 @@
                 // L'email existe, on vérifie le mot de passe
                 $user = $result->fetch_assoc();
 
-                // Vérification du mot de passe (si le mot de passe est haché, on utilise password_verify)
-                if (password_verify($password, $user['mdp'])) {
+                // Vérification du mot de passe (comparaison directe, car les mots de passe ne sont pas hachés)
+                if ($password == $user['mdp']) {
                     // Si les informations sont correctes, on crée la session utilisateur
                     session_start();
                     $_SESSION['user_id'] = $user['id_user']; // Enregistre l'ID de l'utilisateur dans la session
@@ -69,11 +69,19 @@
     }
     ?>
 
-    <?php if ($message != ""): ?>
+    <?php
+    // Afficher le message uniquement après soumission du formulaire (avec méthode POST)
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Affichage du message si celui-ci existe
+        if (!empty($message)): 
+    ?>
         <!-- Afficher le message avec une couleur appropriée -->
         <p style="color: <?php echo (strpos($message, 'réussie') !== false) ? 'green' : 'red'; ?>;">
             <?php echo $message; ?>
         </p>
-    <?php endif; ?>
+    <?php 
+        endif;
+    }
+    ?>
 </body>
 </html>
