@@ -4,45 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styleAcc.css" type="text/css">
-    <script src="accueilInt.js"></script>
+    <link rel="stylesheet" href="./styles/styleHeaderFooter.css" type="text/css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>Zoo de la Barben</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="index.html"><img src="images/logo-zoodelabarben.png" alt="A picture of the logo"></a>
+            <a href="index.html"><img src="media/logo-zoodelabarben.png" alt="A picture of the logo"></a>
+            <p></p>
             <a href="index.html">Accueil</a>
-            <a href="#">Les animaux</a>
-            <a href="#">Visite</a>
-            <a href="#">Qui sommes-nous ?</a>
-            <button class="btn_billetterie"><a href="#">Billetterie</a></button>
-            <button class="btn_connexion"><a href="connexion.html" class="dropdown-content">Connexion</a></button>
-        </nav>
-
-        <!--<div class="carousel-container">
-            <div class="carousel">
-                <div class="carousel-item">
-                    <img src="image.jpg" alt="Animal 1">
-                    <div class="carousel-text">Bienvenue au Parc - Animal 1</div>
-                </div>
-                <div class="carousel-item">
-                    <img src="image2.jpg" alt="Animal 2">
-                    <div class="carousel-text">Découvrez notre espace - Animal 2</div>
-                </div>
-                <div class="carousel-item">
-                    <img src="image3.jpg" alt="Animal 3">
-                    <div class="carousel-text">Rencontrez les animaux - Animal 3</div>
+            <a href="#">Nos animaux</a>
+            <div class="dropdown">
+                <a href="#">Visite</a>
+                <div class="submenu">
+                    <a href="#">Accès au parc</a>
+                    <a href="#">Carte du parc</a>
+                    <a href="#">Les biomes</a>
+                    <a href="#">Les services</a>
                 </div>
             </div>
-            <button class="carousel-button prev">⟨</button>
-            <button class="carousel-button next">⟩</button>
-        </div>-->
+            <a class="btn_a" href="#">Billetterie</a>
+            <a class="btn_a" href="#">Connexion</a>
+        </nav>
                    
     </header>
 
+    <section>
+        <video autoplay loop muted>
+            <source type="video/mp4" src="./media/Presentation_parc.mp4">
+        </video>
+    </section>
+
     <footer>
-        <p>Coucou</p>
+        <p>Parc animalier de la Barben</p>
+        <div class="links"> 
+            <a href="#">Mentions légales</a>
+            <a href="https://www.thefactsite.com/300-random-animal-facts/" target="_blank">Fun Facts</a>
+            <a href="#">Nous contacter</a>
+        </div>
+
+        <div class="reseaux"> 
+            <a href="https://www.instagram.com/parcanimalierdelabarben/" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
+            <a href="https://www.facebook.com/ParclaBarben/?locale=fr_FR"><i class="bi bi-facebook"></i> Facebook</a>
+            <a href="https://www.youtube.com/@zoolabarben"><i class="bi bi-youtube"></i> Youtube</a>
+        </div>
+        
     </footer>
     
 </body>
