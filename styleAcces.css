@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+article{
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #fcf8f2;
+}
+
+section{
+    padding: 5%;   
+}
+
+#map{
+    margin-right: 5%; 
+    padding-right: 10%;
+    height: 65%;
+    width: 40%; 
+}
+
+.car{
+    padding-left: 10%;
+}
