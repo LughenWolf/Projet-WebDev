@@ -13,10 +13,7 @@ body {
     width: 100%;
     max-width: 25rem;
     padding: 2rem 3rem;
-    border-radius: 20px;
-    border-radius: 10px;
     color: white;
-    border: #ffffff80 solid 2px;
 
     overflow: hidden;
     position: relative;
@@ -35,9 +32,11 @@ section{
     box-sizing: border-box;
 }
 
+
 .login, .register{
     flex: 1;
 }
+
 
 .hidden{
     transform: translateX(-50%);
