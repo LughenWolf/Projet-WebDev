@@ -36,21 +36,24 @@
         <div class="wrapper">
             <section class="login">
                 <h1>Connexion</h1>
-                <form>
+                <!-- Formulaire de connexion avec méthode POST -->
+                <form method="POST" action="connect.php">
                     <div class="inputbox">
                         <i class="bi bi-envelope-fill"></i>
-                        <input type="email" required>
+                        <!-- Le champ email a le name 'email' pour que PHP puisse le récupérer -->
+                        <input type="email" name="email" required>
                         <label for="">Email</label>
                     </div>
                     <div class="inputbox">
                         <i class="bi bi-lock-fill"></i>
-                        <input type="password" required>
+                        <!-- Le champ password a le name 'password' pour que PHP puisse le récupérer -->
+                        <input type="password" name="password" required>
                         <label for="">Mot de passe</label>
                     </div>
                     <div class="forgot">
                         <a href="">Mot de passe oublié ?</a>
                     </div>
-                    <button>Connexion</button>
+                    <button type="submit">Connexion</button>
                     <div class="register-option">
                         <span>Pas de compte ?</span>
                         <a href="" id="switch-to-register"> Inscrivez-vous</a>
