@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -36,19 +37,16 @@
         <div class="wrapper">
             <section class="login">
                 <h1>Connexion</h1>
-                <!-- Formulaire de connexion avec méthode POST -->
                 <form method="POST" action="connect.php">
                     <div class="inputbox">
                         <i class="bi bi-envelope-fill"></i>
-                        <!-- Le champ email a le name 'email' pour que PHP puisse le récupérer -->
-                        <input type="email" name="email" required>
-                        <label for="">Email</label>
+                        <input type="email" name="email" required placeholder="">
+                        <label for="email">Email</label>
                     </div>
                     <div class="inputbox">
                         <i class="bi bi-lock-fill"></i>
-                        <!-- Le champ password a le name 'password' pour que PHP puisse le récupérer -->
-                        <input type="password" name="password" required>
-                        <label for="">Mot de passe</label>
+                        <input type="password" name="password" required placeholder="">
+                        <label for="password">Mot de passe</label>
                     </div>
                     <div class="forgot">
                         <a href="">Mot de passe oublié ?</a>
@@ -62,26 +60,26 @@
             </section>
             <section class="register">
                 <h1>Inscription</h1>
-                <form>
+                <form  method="POST" action="back mdp.php">
                     <div class="inputbox">
                         <i class="bi bi-file-person-fill"></i>
-                        <input type="text" required>
-                        <label for="">Prénom</label>
+                        <input type="text" name="prenom" required placeholder="">
+                        <label for="prenom">Prénom</label>
                     </div>
                     <div class="inputbox">
                         <i class="bi bi-file-person-fill"></i>
-                        <input type="text" required>
-                        <label for="">Nom</label>
+                        <input type="text" name="nom" required placeholder="">
+                        <label for="nom">Nom</label>
                     </div>
                     <div class="inputbox">
                         <i class="bi bi-envelope-fill"></i>
-                        <input type="email" required>
-                        <label for="">Email</label>
+                        <input type="email" name="email" required placeholder="">
+                        <label for="email">Email</label>
                     </div>
                     <div class="inputbox">
                         <i class="bi bi-lock-fill"></i>
-                        <input type="password" required>
-                        <label for="">Mot de passe</label>
+                        <input type="password" name="password" required placeholder="">
+                        <label for="password">Mot de passe</label>
                     </div>
                     <button>Inscription</button>
                     <div class="register-option">

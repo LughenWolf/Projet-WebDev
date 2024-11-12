@@ -11,8 +11,9 @@ body {
 
 .container{
     width: 100%;
-    max-width: 30rem;
+    max-width: 25rem;
     padding: 2rem 3rem;
+    border-radius: 20px;
     border-radius: 10px;
     color: white;
     border: #ffffff80 solid 2px;
@@ -70,8 +71,10 @@ form{
 
 .inputbox label{
     position: absolute;
-    top: 50%;
+    left: 1rem;
+    top: 40%;
     left: 0;
+    pointer-events: none;
 }
 
 .inputbox i{
@@ -81,9 +84,11 @@ form{
 }
 
 input:focus ~ label, 
-input:valid ~ label{
-    top: -5px;
+input:valid ~ label,
+.inputbox input:not(:placeholder-shown) ~ label{
+    top: -10px;
 }
+
 
 .forgot{
     display: flex;
@@ -133,3 +138,4 @@ button{
     color: #fff;
     text-decoration: underline;
 }
+
