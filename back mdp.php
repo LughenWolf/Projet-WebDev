@@ -3,7 +3,7 @@
 $server = "localhost";
 $username = "root";
 $password = "";
-$databaseName = "projet zoo"; // Suppression de l'espace dans le nom de la base de données
+$databaseName = "projet_zoo"; // Nom de la base de données
 
 $conn = new mysqli($server, $username, $password, $databaseName);
 
@@ -62,29 +62,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Fermer la connexion
 $conn->close();
 ?>
-
-<!-- Formulaire HTML -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Formulaire d'inscription</title>
-</head>
-<body>
-    <form class="form" method="post" action="">
-        <input type="text" name="nom" id="nom" placeholder="Entrez votre nom" required />
-        <br>
-        <input type="text" name="prenom" id="prenom" placeholder="Entrez votre prénom" required />
-        <br>
-        <input type="email" name="email" id="email" placeholder="Entrez votre email" required />
-        <br>
-        <input type="password" name="password" id="password" placeholder="Entrez votre mot de passe" required />
-        <br>
-        <button type="submit">SIGN UP</button>
-    </form>
-
-    <!-- Affichage du message uniquement si la variable $message n'est pas vide -->
-    <?php if (!empty($message)): ?>
-        <p><?php echo $message; ?></p>
-    <?php endif; ?>
-</body>
-</html>
