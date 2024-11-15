@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: #fcf8f2;
+    background-color: #fcf8f2 !important;
 }
 
 .container{
