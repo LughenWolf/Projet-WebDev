@@ -6,7 +6,7 @@
 
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: #fcf8f2;
+    background-color: #f4e8d9;
 }
 
 
@@ -148,3 +148,16 @@ footer>div{
     font-weight: bold;
     font-size: large;
 }
+
+@media only screen and (max-width: 600px) {
+    footer{
+        background-color: rgb(27, 27, 27);
+        height: 25vh;
+    }
+    footer>div{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+  }
