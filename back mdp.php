@@ -3,7 +3,7 @@
 $server = "localhost";
 $username = "root";
 $password = "";
-$databaseName = "projet_zoo"; // Nom de la base de données
+$databaseName = "projet zoo"; // Nom de la base de données
 
 $conn = new mysqli($server, $username, $password, $databaseName);
 
@@ -41,12 +41,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO user (nom, prenom, email, mdp) VALUES (?, ?, ?, ?)";
         $insert_stmt = $conn->prepare($sql);
         
+        
         // Lier les paramètres pour l'insertion
         $insert_stmt->bind_param("ssss", $nom, $prenom, $email, $password);
         
         // Exécuter la requête d'insertion et vérifier le succès
         if ($insert_stmt->execute()) {
             $message = "Données ajoutées avec succès";
+            header("Location: acces.html");
         } else {
             $message = "Erreur lors de l'insertion : " . $conn->error;
         }
