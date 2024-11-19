@@ -4,12 +4,12 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: #fcf8f2;
+    background-color: #f4e8d9 !important;
 }
 
-.container{
+.container-fluid{
     width: 100%;
     max-width: 25rem;
     padding: 2rem 3rem;

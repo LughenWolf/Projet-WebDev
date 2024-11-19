@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #fcf8f2;
+}
+
+.container-fluid{
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw;
+}
+
+.title{
+    background-image: url(../media/headbandeau-entreezoo.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 0.5rem #333 solid;
+}
+
+.title h1{
+    background-color: rgb(143, 133, 125,.95);
+    border: 0.5rem solid;
+    border-radius: 5px;
+    padding: 1%;
+    color: white;   
+}
+
+.title p{
+    color: white;
+}
+
+
+.billets{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    background-color: #f4e8d9;
+    text-align: center;
+}
+
+.billets img{
+    width: 15vw;
+}
+
+.adult, .kid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid;
+    padding: 5% 5%;
+    margin : 2% 0;
+    position: relative;
+    background-color: #edddc7;
+}
+
+.adult h2, .kid h2 {
+    position: absolute;
+    top: -1rem; 
+    background-color: #f9efdf;
+    padding: 0 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.price {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 1rem; 
+    padding-top: 10%;
+}
+
+.price p {
+    margin: 0; 
+    font-size: 1.2rem; 
+}
+
+.price input {
+    width: 4rem; 
+    padding: 0.2rem; 
+    text-align: center; 
+}
+
+
+.total-adult, .total-kid{
+    height: 1.5em; 
+    line-height: 1.5em; 
+    font-size: 1em; 
+    color: #333; 
+    text-align: left; 
+    padding : 5%;
+}
+
+@media only screen and (max-width: 600px) {
+    .billets{
+        flex-direction: column;
+    }   
+}
