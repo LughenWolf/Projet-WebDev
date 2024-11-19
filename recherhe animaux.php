@@ -14,24 +14,46 @@ if ($conn->connect_error) {
 
 // Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Vérifier que le champ 'animaux' est défini
+    if (!isset($_POST['animaux']) || empty($_POST['animaux'])) {
+        echo json_encode(["error" => "Le champ 'animaux' est vide ou non défini."]);
+        exit();
+    }
+
     // Récupérer les données du formulaire et les échapper pour éviter les injections SQL
     $animal = $conn->real_escape_string($_POST['animaux']);
     
-    // Requête pour récupérer l'ID de l'enclos de l'animal
-    $sql = "SELECT enclos.id_enclos 
-            FROM animaux 
-            INNER JOIN enclos ON animaux.id_enclos = enclos.id_enclos 
-            WHERE animaux.nom LIKE '%$animal%' = '$animal'";
-    
+    // Requête pour récupérer les IDs liés aux tables
+    $sql = "
+        SELECT 
+            enclos.id_enclos, 
+            animaux.id_animaux, 
+            biome.id_biome,
+            biome.nom AS biome_nom
+        FROM animaux
+        INNER JOIN enclos ON animaux.id_enclos = enclos.id_enclos
+        INNER JOIN biome ON enclos.id_biome = biome.id_biome
+        WHERE animaux.nom LIKE '%$animal%'
+    ";
+
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        // Si un enclos est trouvé, envoyer l'ID de l'enclos comme réponse
-        $row = $result->fetch_assoc();
-        echo $row['id_enclos']; // Envoie directement l'ID de l'enclos
+    if ($result && $result->num_rows > 0) {
+        // Si des résultats sont trouvés, les convertir en JSON
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = [
+                "id_enclos" => $row['id_enclos'],
+                "id_animal" => $row['id_animaux'],
+                "id_biome" => $row['id_biome'],
+                "biome_nom" => $row['biome_nom']
+            ];
+        }
+        // Envoyer les résultats au format JSON
+        echo json_encode($data);
     } else {
-        // Envoie un message d'erreur en cas de problème
-        echo "Aucun enclos trouvé pour cet animal.";
+        // Aucun résultat trouvé
+        echo json_encode(["error" => "Aucun résultat trouvé pour cet animal."]);
     }
 }
 

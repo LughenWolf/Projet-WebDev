@@ -19,15 +19,15 @@
 
     // Vérification de la connexion
     if ($conn->connect_error) {
-        die("Connexion à la BDD échouée : " . $conn->connect_error);
+        die("Connexion à la base de données échouée : " . $conn->connect_error);
     }
 
     $message = ""; // Variable pour stocker les messages
 
     // Traitement du formulaire lors de la soumission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Vérifier que les champs 'email' et 'password' sont définis
-        if (isset($_POST['email']) && isset($_POST['password'])) {
+        // Vérifier que les champs 'email' et 'password' sont définis et non vides
+        if (!empty($_POST['email']) && !empty($_POST['password'])) {
             // Récupérer les données envoyées via POST
             $email = $conn->real_escape_string($_POST['email']);
             $password = $_POST['password'];
@@ -36,19 +36,18 @@
             $sql = "SELECT * FROM user WHERE email = '$email' LIMIT 1";
             $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                // L'email existe, on vérifie le mot de passe
+            if ($result && $result->num_rows > 0) {
+                // L'email existe, vérifier le mot de passe
                 $user = $result->fetch_assoc();
 
-                // Vérification du mot de passe (comparaison directe)
-                if ($password == $user['mdp']) {
-                    // Création de la session utilisateur
-                    $_SESSION['user_id'] = $user['id_user']; // Enregistre l'ID de l'utilisateur dans la session
-                    $_SESSION['user_email'] = $user['email']; // Enregistre l'email dans la session
-                    
-                    // Redirection vers une autre page si la connexion est réussie
-                    header("Location: acces.html"); // Remplacez "acces.html" par la page de destination souhaitée
-                    exit(); // Termine le script pour s'assurer que la redirection est immédiate
+                if ($password == $user['mdp']) { // Comparaison directe du mot de passe
+                    // Enregistrer les informations de l'utilisateur dans la session
+                    $_SESSION['user_id'] = $user['id_user'];
+                    $_SESSION['user_email'] = $user['email'];
+
+                    // Redirection vers une autre page
+                    header("Location: compte.html");
+                    exit();
                 } else {
                     // Mot de passe incorrect
                     $message = "Mot de passe incorrect.";
@@ -72,7 +71,5 @@
         </p>
     <?php endif; ?>
 
-    
-
-</body>
+   
 </html>
