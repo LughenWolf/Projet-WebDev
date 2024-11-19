@@ -13,27 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html"><img src="media/logo-zoodelabarben.png" alt="A picture of the logo"></a>
-            <p></p>
-            <a href="index.html">Accueil</a>
-            <a href="#">Nos animaux</a>
-            <div class="dropdown">
-                <a href="#">Visite</a>
-                <div class="submenu">
-                    <a href="acces.html">Accès au parc</a>
-                    <a href="#">Carte du parc</a>
-                    <a href="#">Les biomes</a>
-                    <a href="#">Les services</a>
-                </div>
-            </div>
-            <a class="btn_a" href="billetterie.html">Billetterie</a>
-            <a id="userDisplay" class="user-display" href="profil.html"></a>
-            <a class="btn_a" id="loginButton" href="connexion.html">Connexion</a>
-        </nav>
-        <script src="scriptHeader.js"></script>           
-    </header>
+    <div id="header"></div>
 
     <section class="container-fluid">
         <div class="title">
@@ -45,35 +25,30 @@
                 <h2>Billets adulte</h2>
                 <img src="./media/lion-head-good.png">
                 <div class="price">
-                    <p>20€</p>
-                    <input type="number" id="tadult" name="tadult" min="0" max="10" />
+                    <p>20€ -</p>
+                    <input type="number" id="tadult" name="tadult" min="0" max="10" value="0"/>
                 </div>
+                <p id="adultTotal" class="total-adult"></p>
             </div>
             <div class="kid">
                 <h2>Billets enfant</h2>
                 <img src="./media/cub-head-good.png">
                 <div class="price">
-                    <p>12€</p>
-                    <input type="number" id="tkid" name="tkid" min="0" max="10" />
+                    <p>12€ -</p>
+                    <input type="number" id="tkid" name="tkid" min="0" max="10" value="0"/>
                 </div>
+                <p id="kidTotal" class="total-kid"></p>
             </div>
+        </div>
+        <div class="price">
+            <p>Total - </p>
+            <p id="total" class="total-T"></p>
         </div>
     </section>
 
-    <footer>
-        <p>Parc animalier de la Barben</p>
-        <div class="links"> 
-            <a href="#">Mentions légales</a>
-            <a href="https://www.thefactsite.com/300-random-animal-facts/" target="_blank">Fun Facts</a>
-            <a href="#">Nous contacter</a>
-        </div>
+    <div id="footer"></div>
 
-        <div class="reseaux"> 
-            <a href="https://www.instagram.com/parcanimalierdelabarben/" target="_blank"><i class="bi bi-instagram"></i> Instagram</a>
-            <a href="https://www.facebook.com/ParclaBarben/?locale=fr_FR"><i class="bi bi-facebook"></i> Facebook</a>
-            <a href="https://www.youtube.com/@zoolabarben"><i class="bi bi-youtube"></i> Youtube</a>
-        </div>
-        
-    </footer>
+    <script src="scriptAffHetF.js"></script>
+    <script src="scriptBilletterie.js"></script>
 </body>
 </html>

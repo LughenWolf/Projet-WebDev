@@ -93,3 +93,17 @@ body {
 }
 
 
+.total-adult, .total-kid{
+    height: 1.5em; 
+    line-height: 1.5em; 
+    font-size: 1em; 
+    color: #333; 
+    text-align: left; 
+    padding : 5%;
+}
+
+@media only screen and (max-width: 600px) {
+    .billets{
+        flex-direction: column;
+    }   
+}
