@@ -48,7 +48,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Exécuter la requête d'insertion et vérifier le succès
         if ($insert_stmt->execute()) {
             $message = "Données ajoutées avec succès";
-            header("Location: acces.html");
+            session_start();
+            $_SESSION['user_id'] = $user['id_user'];
+                    $_SESSION['user_email'] = $email;
+                    $_SESSION['user_role'] ='user'; // Stocker le rôle dans la session
+                    $_SESSION['user_nom'] = $nom;
+                    $_SESSION['user_prenom'] = $prenom;
+            header("Location: profil.html");
         } else {
             $message = "Erreur lors de l'insertion : " . $conn->error;
         }
