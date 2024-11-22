@@ -57,5 +57,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 echo json_encode($_SESSION['user_role'] );
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $status=$conn->real_escape_string($_POST['status']);
+    $sq2 = "UPDATE enclosures SET status = ? WHERE id = ?";
+
+    // Préparer et exécuter la requête sécurisée
+    $stmt = $conn->prepare($sq2);
+    $stmt->bind_param("si", $status, $id_enclos);
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $horaire=$conn->real_escape_string($_POST['horaire']);
+    $date=$conn->real_escape_string($_POST['date']);
+    $sq3 = "UPDATE horaire_repas SET heure_repas = ?, date_repas = ? WHERE id_enclos = ?";
+
+    // Préparer et exécuter la requête sécurisée
+    $stmt = $conn->prepare($sq3);
+    $stmt->bind_param("ssi", $horaire, $date, $id_enclos);
+}
 $conn->close();
 ?>
