@@ -4,7 +4,7 @@ $server = "localhost";
 $username = "root";
 $password = "";
 $databaseName = "projet zoo"; // Nom de la base de données
-
+session_start();
 $conn = new mysqli($server, $username, $password, $databaseName);
 
 // Vérification de la connexion
@@ -56,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode(["error" => "Aucun résultat trouvé pour cet animal."]);
     }
 }
-
-// Fermer la connexion
+echo json_encode($_SESSION['user_role'] );
 $conn->close();
 ?>

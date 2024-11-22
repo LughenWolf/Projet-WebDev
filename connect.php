@@ -29,7 +29,7 @@
         // Vérifier que les champs 'email' et 'password' sont définis et non vides
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             // Récupérer les données envoyées via POST
-            $email = $conn->real_escape_string($_POST['email']);
+            $email = $_POST['email'];
             $password = $_POST['password'];
 
             // Requête pour récupérer l'utilisateur avec l'email donné
@@ -44,6 +44,7 @@
                     // Enregistrer les informations de l'utilisateur dans la session
                     $_SESSION['user_id'] = $user['id_user'];
                     $_SESSION['user_email'] = $user['email'];
+                    $_SESSION['user_role'] = $user['role']; // Stocker le rôle dans la session
 
                     // Redirection vers une autre page
                     header("Location: compte.html");
@@ -71,5 +72,4 @@
         </p>
     <?php endif; ?>
 
-   
-</html>
+    
