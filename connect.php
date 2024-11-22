@@ -45,9 +45,10 @@
                     $_SESSION['user_id'] = $user['id_user'];
                     $_SESSION['user_email'] = $user['email'];
                     $_SESSION['user_role'] = $user['role']; // Stocker le rôle dans la session
-
+                    $_SESSION['user_nom'] = $user['nom'];
+                    $_SESSION['user_prenom'] = $user['prenom'];
                     // Redirection vers une autre page
-                    header("Location: compte.html");
+                    header("Location: profil.html");
                     exit();
                 } else {
                     // Mot de passe incorrect
