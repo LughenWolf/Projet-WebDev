@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 15 nov. 2024 à 10:03
+-- Généré le : ven. 22 nov. 2024 à 09:42
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -32,83 +32,86 @@ CREATE TABLE IF NOT EXISTS `animaux` (
   `id_animaux` int NOT NULL AUTO_INCREMENT,
   `nom` text NOT NULL,
   `id_enclos` int NOT NULL,
+  `description` text NOT NULL,
   PRIMARY KEY (`id_animaux`),
   KEY `id_enclos` (`id_enclos`)
-) ENGINE=MyISAM AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `animaux`
 --
 
-INSERT INTO `animaux` (`id_animaux`, `nom`, `id_enclos`) VALUES
-(1, 'Rhinocéros', 1),
-(2, 'Oryx beisa', 1),
-(3, 'Gnou', 1),
-(4, 'Suricate', 2),
-(5, 'Fennec', 3),
-(6, 'Coati', 4),
-(7, 'Saïmiri', 4),
-(8, 'Tapir', 5),
-(9, 'Gazelle', 6),
-(10, 'Autruche', 6),
-(11, 'Guépard', 7),
-(12, 'Casoar', 8),
-(13, 'Crocodile nain', 9),
-(14, 'Lion', 10),
-(15, 'Hippopotame', 11),
-(16, 'Zèbre', 12),
-(17, 'Hyène', 13),
-(18, 'Loup à crinière', 14),
-(19, 'Girafe', 15),
-(20, 'Eléphant', 16),
-(21, 'Varan de Komodo', 17),
-(22, 'Grivet Cercophitèque', 18),
-(23, 'Ouistiti Gibbon', 19),
-(24, 'Gibbon', 22),
-(25, 'Tamarin Capucin', 20),
-(26, 'Capucin', 21),
-(27, 'Panthère', 23),
-(28, 'Grand Hocco', 24),
-(29, 'Ara perroquet', 25),
-(30, 'Panda roux', 26),
-(31, 'Chèvre naine', 27),
-(32, 'Lémurien', 28),
-(33, 'Tortue', 29),
-(34, 'Mouflon', 30),
-(35, 'Binturong', 31),
-(36, 'Loutre', 31),
-(37, 'Macaque Crabier', 32),
-(38, 'Cerf', 33),
-(39, 'Vautour', 34),
-(40, 'Antilope', 35),
-(41, 'Daim', 35),
-(42, 'Nilgaut', 35),
-(43, 'Loup d\'Europe', 36),
-(44, 'Dromadaire', 37),
-(45, 'Âne de Provence', 37),
-(46, 'Bison', 38),
-(47, 'Porc-épic', 39),
-(48, 'Émeu', 40),
-(49, 'Wallaby', 40),
-(50, 'Flamant rose', 41),
-(51, 'Nandou', 41),
-(52, 'Tamanoir', 41),
-(53, 'Pécari', 42),
-(54, 'Tortue', 43),
-(55, 'Ibis', 43),
-(56, 'Oryx algazelle', 44),
-(57, 'Watusi', 44),
-(58, 'Âne de Somalie', 44),
-(59, 'Yack', 45),
-(60, 'Mouton Noir', 45),
-(61, 'Cigogne', 46),
-(62, 'Chien des buissons', 47),
-(63, 'Tigre', 48),
-(64, 'Serval', 49),
-(65, 'Lynx', 50),
-(66, 'Python', 52),
-(67, 'Tortue', 52),
-(68, 'Iguane', 52);
+INSERT INTO `animaux` (`id_animaux`, `nom`, `id_enclos`, `description`) VALUES
+(1, 'Rhinocéros', 1, ''),
+(2, 'Oryx beisa', 1, ''),
+(3, 'Gnou', 1, ''),
+(4, 'Suricate', 2, ''),
+(5, 'Fennec', 3, ''),
+(6, 'Coati', 4, ''),
+(7, 'Saïmiri', 4, ''),
+(8, 'Tapir', 5, ''),
+(9, 'Gazelle', 6, ''),
+(10, 'Autruche', 6, ''),
+(11, 'Guépard', 7, ''),
+(12, 'Casoar', 8, ''),
+(13, 'Crocodile nain', 9, ''),
+(14, 'Lion', 10, ''),
+(15, 'Hippopotame', 11, ''),
+(16, 'Zèbre', 12, ''),
+(17, 'Hyène', 13, ''),
+(18, 'Loup à crinière', 14, ''),
+(19, 'Girafe', 15, ''),
+(20, 'Eléphant', 16, ''),
+(21, 'Varan de Komodo', 17, ''),
+(22, 'Grivet Cercophitèque', 18, ''),
+(23, 'Ouistiti ', 19, ''),
+(24, 'Gibbon', 22, ''),
+(25, 'Tamarin ', 20, ''),
+(26, 'Capucin', 21, ''),
+(27, 'Panthère', 23, ''),
+(28, 'Grand Hocco', 24, ''),
+(29, 'Ara perroquet', 25, ''),
+(30, 'Panda roux', 26, ''),
+(31, 'Chèvre naine', 27, ''),
+(32, 'Lémurien', 28, ''),
+(33, 'Tortue', 29, ''),
+(34, 'Mouflon', 30, ''),
+(35, 'Binturong', 31, ''),
+(36, 'Loutre', 31, ''),
+(37, 'Macaque Crabier', 32, ''),
+(38, 'Cerf', 33, ''),
+(39, 'Vautour', 34, ''),
+(40, 'Antilope', 35, ''),
+(41, 'Daim', 35, ''),
+(42, 'Nilgaut', 35, ''),
+(43, 'Loup d\'Europe', 36, ''),
+(44, 'Dromadaire', 37, ''),
+(45, 'Âne de Provence', 37, ''),
+(46, 'Bison', 38, ''),
+(47, 'Porc-épic', 39, ''),
+(48, 'Émeu', 40, ''),
+(49, 'Wallaby', 40, ''),
+(50, 'Flamant rose', 41, ''),
+(51, 'Nandou', 41, ''),
+(52, 'Tamanoir', 41, ''),
+(53, 'Pécari', 42, ''),
+(54, 'Tortue', 43, ''),
+(55, 'Ibis', 43, ''),
+(56, 'Oryx algazelle', 44, ''),
+(57, 'Watusi', 44, ''),
+(58, 'Âne de Somalie', 44, ''),
+(59, 'Yack', 45, ''),
+(60, 'Mouton Noir', 45, ''),
+(61, 'Cigogne', 46, ''),
+(62, 'Chien des buissons', 47, ''),
+(63, 'Tigre', 48, ''),
+(64, 'Serval', 49, ''),
+(65, 'Lynx', 50, ''),
+(66, 'Python', 52, ''),
+(67, 'Tortue', 52, ''),
+(68, 'Iguane', 52, ''),
+(69, 'Cercopithèque', 18, ''),
+(70, 'Marabout', 46, '');
 
 -- --------------------------------------------------------
 
@@ -162,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `biome` (
 --
 
 INSERT INTO `biome` (`id_biome`, `nom`, `couleur`) VALUES
-(1, 'Le plateau', 'rouge'),
+(1, 'Le Plateau', 'rouge'),
 (2, 'Le Belvédère', 'gris'),
 (3, 'Les Clairières', 'jaune'),
 (4, 'Le Bois des pins', 'vert'),
@@ -256,6 +259,21 @@ CREATE TABLE IF NOT EXISTS `horaire_repas` (
   `id_enclos` int NOT NULL,
   PRIMARY KEY (`id_repas`),
   KEY `id_enclos` (`id_enclos`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+CREATE TABLE IF NOT EXISTS `images` (
+  `id_images` int NOT NULL AUTO_INCREMENT,
+  `lien_images` varchar(255) NOT NULL,
+  `id_animal` int DEFAULT NULL,
+  PRIMARY KEY (`id_images`),
+  KEY `fk_id_animal` (`id_animal`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
