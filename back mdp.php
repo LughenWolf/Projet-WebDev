@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         // Si l'email est déjà présent, définir un message spécifique
         $message = "L'email existe déjà dans la base de données.";
+        header(../connexion.html);
     } else {
         // L'email n'existe pas, préparer et exécuter l'insertion des nouvelles données
         $sql = "INSERT INTO user (nom, prenom, email, mdp) VALUES (?, ?, ?, ?)";
