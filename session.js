@@ -1,89 +1,105 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Gestion de la bascule entre Connexion et Inscription
-    const switchToRegister = document.getElementById("switch-to-register");
-    const switchToLogin = document.getElementById("switch-to-login");
-    const wrapper = document.querySelector(".wrapper");
+//NE PAS TOUCHER !!!!!!!!!!
+document.getElementById("switch-to-register").addEventListener('click', (event)=>{
+    event.preventDefault();
+    document.querySelector(".wrapper").classList.add("hidden");
+})
+document.getElementById("switch-to-login").addEventListener('click', (event)=>{
+    event.preventDefault();
+    document.querySelector(".wrapper").classList.remove("hidden");
+})
+//NE PAS TOUCHER !!!!!!!!!!
 
-    // Basculer vers la section d'inscription
-    switchToRegister.addEventListener("click", (event) => {
-        event.preventDefault();
-        wrapper.classList.add("hidden");
-    });
 
-    // Basculer vers la section de connexion
-    switchToLogin.addEventListener("click", (event) => {
-        event.preventDefault();
-        wrapper.classList.remove("hidden");
-    });
+/*document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("#login-form");
 
-    // Formulaire de connexion
-    const loginForm = document.querySelector(".login form");
-    loginForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
+    if (form) {
+        console.log("Formulaire trouvé. Attachement de l'événement...");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-        const formData = new FormData(loginForm);
-        const email = formData.get("email");
-        const password = formData.get("password");
+            const email = document.querySelector("#email");
+            const password = document.querySelector("#password");
 
-        // Validation simple côté client
-        if (!email || !password) {
-            alert("Veuillez remplir tous les champs.");
-            return;
-        }
-
-        try {
-            const response = await fetch(loginForm.action, {
-                method: "POST",
-                body: formData,
-            });
-
-            const result = await response.json();
-            if (result.success) {
-                alert("Connexion réussie !");
-                localStorage.setItem("user", JSON.stringify(result.user));
-                window.location.href = "profil.html";
-            } else {
-                alert(result.message || "Erreur lors de la connexion.");
+            if (!email || !password) {
+                alert("Les champs email et mot de passe sont requis.");
+                return;
             }
-        } catch (error) {
-            console.error("Erreur :", error);
-            alert("Une erreur est survenue. Veuillez réessayer.");
-        }
-    });
 
-    // Formulaire d'inscription
-    const registerForm = document.querySelector(".register form");
-    registerForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
+            const emailValue = email.value.trim();
+            const passwordValue = password.value.trim();
 
-        const formData = new FormData(registerForm);
-        const prenom = formData.get("prenom");
-        const nom = formData.get("nom");
-        const email = formData.get("email");
-        const password = formData.get("password");
-
-        // Validation simple côté client
-        if (!prenom || !nom || !email || !password) {
-            alert("Veuillez remplir tous les champs.");
-            return;
-        }
-
-        try {
-            const response = await fetch(registerForm.action, {
-                method: "POST",
-                body: formData,
-            });
-
-            const result = await response.json();
-            if (result.success) {
-                alert("Inscription réussie !");
-                wrapper.classList.remove("hidden"); // Retour à la section connexion
-            } else {
-                alert(result.message || "Erreur lors de l'inscription.");
+            if (!emailValue || !passwordValue) {
+                alert("Veuillez remplir tous les champs.");
+                return;
             }
-        } catch (error) {
-            console.error("Erreur :", error);
-            alert("Une erreur est survenue. Veuillez réessayer.");
+
+            try {
+                const response = await fetch("http://localhost/projet/back/connexion.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email: emailValue, password: passwordValue }),
+                });
+
+                const data = await response.json();
+
+                if (data.token) {
+                    localStorage.setItem("token", data.token);
+                    window.location.href = "profil.html";
+                } else {
+                    alert(data.error || "Erreur lors de la connexion.");
+                }
+            } catch (error) {
+                console.error("Erreur lors de la connexion :", error);
+                alert("Une erreur est survenue. Veuillez réessayer.");
+            }
+        });
+    } else {
+        console.error("Formulaire introuvable !");
+    }
+});*/
+
+document.querySelector('#login-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const email = formData.get('email');
+    const password = formData.get('password');
+    const errorMessage = document.getElementById('error-message'); // Message d'erreur
+
+    try {
+        const response = await fetch('http://localhost/projet/back/connexion.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response;
+        console.log(data);
+
+        if (data.status === 200) {
+            // Stocker le token
+            localStorage.setItem('token', data.token);
+            alert('Connexion réussie');
+            location.reload(); // Recharger ou rediriger
+        } else {
+            // Afficher le message d'erreur sur place
+            errorMessage.textContent = data.message;
+            errorMessage.style.display = 'block';
         }
-    });
+    } catch (error) {
+        console.log(errorMessage);
+        console.error('Erreur lors de la connexion :', error);
+        errorMessage.textContent = 'Erreur interne. Veuillez réessayer.';
+        errorMessage.style.display = 'block';
+    }
 });
+
+
+
+
+
