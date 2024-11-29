@@ -102,6 +102,56 @@ body {
     padding : 5%;
 }
 
+img:hover{
+    transform: scale(1.1);
+}
+
+.buy a{
+    margin: 0;
+    padding: 0;
+}
+
+.achat {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    text-align: center; 
+    height: 2.8rem;
+    border: 1px solid #8F857D;
+}
+
+.buy {
+    position: absolute;   
+    height: 2.8rem;
+    right: 0;
+}
+
+.buy .btn_a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem; 
+    text-decoration: none;
+    border: none;
+    border-radius: 0;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color:rgb(0,103,79);
+    color: white;
+}
+
+.priceT{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 1rem;
+
+    font-weight: bold; 
+    font-size: 24px;
+}
+
 @media only screen and (max-width: 600px) {
     .billets{
         flex-direction: column;
