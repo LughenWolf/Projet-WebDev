@@ -3,7 +3,7 @@
 $server = "localhost";
 $username = "root";
 $password = "";
-$databaseName = "projet zoo"; // Nom de la base de données
+$databaseName = "projet_zoo"; // Nom de la base de données
 
 $conn = new mysqli($server, $username, $password, $databaseName);
 
@@ -26,8 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailToCheck = $email;
 
     // Requête pour vérifier si l'email existe déjà
-    $sql2 = "SELECT * FROM user WHERE email = ?";
-    $stmt = $conn->prepare($sql2);
+    $sq2 = "SELECT * FROM user WHERE email = ?";
+    $stmt = $conn->prepare($sq2);
     $stmt->bind_param("s", $emailToCheck);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -35,27 +35,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérification du résultat
     if ($result->num_rows > 0) {
         // Si l'email est déjà présent, définir un message spécifique
-        $message = "L'email existe déjà dans la base de données.";
-        echo $message;
-        header("Location: ../connexion.html");
-        exit; // Assurez-vous de stopper l'exécution après une redirection
+        $message = "Il existe déjà un compte à cette adresse.";
+        header("Location: ../connexion.html?error=");
+        exit();
     } else {
         // L'email n'existe pas, préparer et exécuter l'insertion des nouvelles données
         $sql = "INSERT INTO user (nom, prenom, email, mdp) VALUES (?, ?, ?, ?)";
         $insert_stmt = $conn->prepare($sql);
-
+        
+        
         // Lier les paramètres pour l'insertion
         $insert_stmt->bind_param("ssss", $nom, $prenom, $email, $password);
         
         // Exécuter la requête d'insertion et vérifier le succès
         if ($insert_stmt->execute()) {
             $message = "Données ajoutées avec succès";
-            header("Location: profil.html");
-            exit;
+            session_start();
+            $_SESSION['user_id'] = $user['id_user'];
+                    $_SESSION['user_email'] = $email;
+                    $_SESSION['user_role'] ='user'; // Stocker le rôle dans la session
+                    $_SESSION['user_nom'] = $nom;
+                    $_SESSION['user_prenom'] = $prenom;
+            header("Location: ../profil.html");
         } else {
             $message = "Erreur lors de l'insertion : " . $conn->error;
         }
-
+        
         // Fermer la requête d'insertion
         $insert_stmt->close();
     }

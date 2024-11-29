@@ -13,7 +13,7 @@
     $server = "localhost";
     $username = "root";
     $password = "";
-    $databaseName = "projet zoo"; // Nom de la base de données
+    $databaseName = "projet_zoo"; // Nom de la base de données
 
     $conn = new mysqli($server, $username, $password, $databaseName);
 
@@ -42,7 +42,7 @@
 
                 if ($password == $user['mdp']) { // Comparaison directe du mot de passe
                     // Redirection vers une autre page
-                    header("Location: profil.html");
+                    header("Location: ../profil.html");
                     exit();
                 } else {
                     // Mot de passe incorrect
