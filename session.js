@@ -9,58 +9,6 @@ document.getElementById("switch-to-login").addEventListener('click', (event)=>{
 })
 //NE PAS TOUCHER !!!!!!!!!!
 
-
-/*document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("#login-form");
-
-    if (form) {
-        console.log("Formulaire trouvé. Attachement de l'événement...");
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            const email = document.querySelector("#email");
-            const password = document.querySelector("#password");
-
-            if (!email || !password) {
-                alert("Les champs email et mot de passe sont requis.");
-                return;
-            }
-
-            const emailValue = email.value.trim();
-            const passwordValue = password.value.trim();
-
-            if (!emailValue || !passwordValue) {
-                alert("Veuillez remplir tous les champs.");
-                return;
-            }
-
-            try {
-                const response = await fetch("http://localhost/projet/back/connexion.php", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ email: emailValue, password: passwordValue }),
-                });
-
-                const data = await response.json();
-
-                if (data.token) {
-                    localStorage.setItem("token", data.token);
-                    window.location.href = "profil.html";
-                } else {
-                    alert(data.error || "Erreur lors de la connexion.");
-                }
-            } catch (error) {
-                console.error("Erreur lors de la connexion :", error);
-                alert("Une erreur est survenue. Veuillez réessayer.");
-            }
-        });
-    } else {
-        console.error("Formulaire introuvable !");
-    }
-});*/
-
 document.querySelector('#login-form').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -85,7 +33,7 @@ document.querySelector('#login-form').addEventListener('submit', async (event) =
             // Stocker le token
             localStorage.setItem('token', data.token);
             alert('Connexion réussie');
-            location.reload(); // Recharger ou rediriger
+            window.location.href = 'profil.html';
         } else {
             // Afficher le message d'erreur sur place
             errorMessage.textContent = data.message;
@@ -98,6 +46,8 @@ document.querySelector('#login-form').addEventListener('submit', async (event) =
         errorMessage.style.display = 'block';
     }
 });
+
+
 
 
 

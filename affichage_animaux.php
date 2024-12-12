@@ -1,11 +1,16 @@
 <?php
 // Connexion à la base de données
 $host = 'localhost';
-$dbname = 'projet zoo';
+$dbname = 'projet_zoo';
 $username = 'root';
 $password = '';
 
 header('Content-Type: application/json');
+
+$user_role = isset($_POST['user_role']) ? $_POST['user_role'] : null;
+
+$is_admin = $user_role === 'admin';
+
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
@@ -99,4 +104,7 @@ if (isset($_POST['id_enclos'], $_POST['status'], $_POST['heure_repas'], $_POST['
 
 // Si aucune requête valide n'est reçue
 echo json_encode(['success' => false, 'error' => "Aucune requête valide reçue."]);
+
+
+
 ?>

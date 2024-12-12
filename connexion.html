@@ -18,17 +18,17 @@
     
     <div class="container-fluid">
         <div class="wrapper">
-            <section class="login">
+            <section class="login" id="login-section">
                 <h1>Connexion</h1>
-                <form method="POST" action="./back/connect.php" autocomplete="off">
+                <form id="login-form" method="POST" action="./back/connexion.php" autocomplete="off">
                     <div class="inputbox">
                         <i class="bi bi-envelope-fill"></i>
-                        <input type="email" name="email" required placeholder="">
+                        <input type="email" id="email" name="email" required placeholder="">
                         <label for="email">Email</label>
                     </div>
                     <div class="inputbox">
                         <i class="bi bi-lock-fill"></i>
-                        <input type="password" name="password" required placeholder="">
+                        <input type="password" id="password" name="password" required placeholder="">
                         <label for="password">Mot de passe</label>
                     </div>
                     <div class="forgot">
@@ -43,7 +43,7 @@
             </section>
             <section class="register">
                 <h1>Inscription</h1>
-                    <form  method="POST" action="./back/back mdp.php"  autocomplete="off">
+                    <form  method="POST" action="./back/inscription.php"  autocomplete="off">
                     <div class="inputbox">
                         <i class="bi bi-file-person-fill"></i>
                         <input type="text" name="prenom" required placeholder="">
@@ -78,6 +78,6 @@
 
     <script src="scriptAffHetF.js"></script>
     <script src="session.js"></script>
-    <!--<script src="scriptConnexion.js"></script> -->
+    <!--<script src="scriptConnexion.js"></script>-->
 </body>
 </html>

@@ -25,8 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Rediriger ou mettre à jour l'interface après connexion
     document.getElementById("userDisplay").textContent = `${prenom} ${nom}`;
     document.getElementById("loginButton").style.display = "none";
-}
+}*/
 
 // Exemple de déclenchement de la fonction handleLogin avec un prénom et un nom
 // Appeler cette fonction après une connexion réussie en remplaçant les valeurs par celles de l'utilisateur connecté
-handleLogin("Alice", "Dupont");*/

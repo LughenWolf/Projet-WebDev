@@ -3,121 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Enclos</title>
+    <link rel="stylesheet" href="./styles/styleHeaderFooter.css" type="text/css">
+    <link rel="stylesheet" href="./styles/styleInventaire.css" type="text/css">
+    <title>Animaux et enclos</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .biome-button {
-            margin: 10px;
-            padding: 15px;
-            font-size: 16px;
-            color: white;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 8px;
-            border: 1px solid #ddd;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
-    <h1>Gestion des Enclos et Animaux</h1>
-    <div id="biome-buttons">
-        <button class="biome-button" data-id="1">Le Plateau</button>
-        <button class="biome-button" data-id="2">Le Belvédère</button>
-        <button class="biome-button" data-id="3">Les Clairières</button>
-        <button class="biome-button" data-id="4">Le Bois des Pins</button>
-        <button class="biome-button" data-id="5">Le Vallon des Cascades</button>
-        <button class="biome-button" data-id="6">La Bergerie des Reptiles</button>
-    </div>
+    <div id="header"></div>
+
+    <section id="enclos-nav">
+        <h1>Animaux et enclos</h1>
+        <div id="biome-buttons">
+            <button class="biome-button" data-id="1">Le Plateau</button>
+            <button class="biome-button" data-id="2">Le Belvédère</button>
+            <button class="biome-button" data-id="3">Les Clairières</button>
+            <button class="biome-button" data-id="4">Le Bois des Pins</button>
+            <button class="biome-button" data-id="5">Le Vallon des Cascades</button>
+            <button class="biome-button" data-id="6">La Bergerie des Reptiles</button>
+        </div>
+    </section>
     <div id="enclos-list"></div>
 
-    <script>
-        $(document).ready(function () {
-            // Afficher les enclos pour un biome
-            $(".biome-button").on("click", function () {
-                const id_biome = $(this).data("id");
-                $("#enclos-list").html("Chargement...");
+    <div id="footer"></div>
 
-                $.post("affichage_animaux.php", { id_biome }, function (response) {
-                    if (response.success) {
-                        let content = "<table><thead><tr><th>ID Enclos</th><th>Statut</th><th>Horaires</th><th>Actions</th><th>Animaux</th></tr></thead><tbody>";
-                        response.data.forEach(enclos => {
-                            content += `
-                                <tr>
-                                    <td>${enclos.id_enclos}</td>
-                                    <td>
-                                        <select class="status" data-id="${enclos.id_enclos}">
-                                            <option value="open" ${enclos.status === 'open' ? 'selected' : ''}>Ouvert</option>
-                                            <option value="close" ${enclos.status === 'close' ? 'selected' : ''}>Fermé</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input type="time" class="heure-repas" data-id="${enclos.id_enclos}" value="${enclos.heure_repas || ''}">
-                                        <input type="date" class="date-repas" data-id="${enclos.id_enclos}" value="${enclos.date_repas || ''}">
-                                    </td>
-                                    <td>
-                                        <button class="update-enclos" data-id="${enclos.id_enclos}">Mettre à jour</button>
-                                    </td>
-                                    <td>
-                                        <button class="view-animals" data-id="${enclos.id_enclos}">Afficher</button>
-                                        <ul id="animal-list-${enclos.id_enclos}" style="display: none;"></ul>
-                                    </td>
-                                </tr>
-                            `;
-                        });
-                        content += "</tbody></table>";
-                        $("#enclos-list").html(content);
-                    } else {
-                        $("#enclos-list").html("Erreur : " + response.error);
-                    }
-                });
-            });
-
-            // Mettre à jour un enclos
-            $(document).on("click", ".update-enclos", function () {
-                const id_enclos = $(this).data("id");
-                const status = $(`.status[data-id="${id_enclos}"]`).val();
-                const heure_repas = $(`.heure-repas[data-id="${id_enclos}"]`).val();
-                const date_repas = $(`.date-repas[data-id="${id_enclos}"]`).val();
-
-                $.post("affichage_animaux.php", { id_enclos, status, heure_repas, date_repas }, function (response) {
-                    alert(response.message || "Erreur : " + response.error);
-                });
-            });
-
-            // Afficher les animaux d'un enclos
-            $(document).on("click", ".view-animals", function () {
-                const id_enclos = $(this).data("id");
-                const list = $(`#animal-list-${id_enclos}`);
-                if (list.is(":visible")) {
-                    list.hide();
-                    return;
-                }
-
-                $.post("affichage_animaux.php", { id_enclos }, function (response) {
-                    if (response.success) {
-                        list.html(response.data.map(a => `<li>${a}</li>`).join("")).show();
-                    } else {
-                        alert("Erreur : " + response.error);
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="enclos.js"></script>
+    <script src="scriptAffHetF.js"></script>
 </body>
 </html>
+
